@@ -6,7 +6,7 @@ I start with general ideas `kaggle_ideas.md` then use a command to create a deta
 
 I then use the spec command to create a detailed technical specification which can be reviewed.
 
-This spec is then executed and produces plots, charts, reports in the OUTPUTS folder.
+This spec is then executed and produces plots, charts, reports in the OUPUTS folder.
 
 There is a `report.html` and plots and charts in `plots` folder.
 
