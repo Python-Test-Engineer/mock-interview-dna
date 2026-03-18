@@ -16,6 +16,8 @@ There is a `report.html`.
 
 I run a dashboard command to create a shiny dashboard.
 
+I then use /insights, a command that uses the best model to examin all the plots and charts to find deep insights of business and data analytics, creating both a `insights.md` file and `insights.html` web page.
+
 ## Set up
 
 1. Using `pip`.
