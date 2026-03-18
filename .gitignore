@@ -11,6 +11,7 @@ wheels/
 
 # Virtual environments
 .venv/
+venv/
 
 # data (too large and may contain patient data)
 data/
