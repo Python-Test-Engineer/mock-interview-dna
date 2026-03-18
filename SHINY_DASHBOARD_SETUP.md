@@ -40,3 +40,5 @@
    ```bash
    python src/dashboard.py
    ```
+
+It may seem idle for a bit as it build it.
