@@ -36,4 +36,6 @@ One command per step. No boilerplate. No setup beyond the first `uv sync`.
 
 The first run saves hours. By the tenth, it's changed how the team thinks about data — from "we'll look into that eventually" to "let's find out right now." That shift is the real product.
 
+*Remember - many instances of Claude Code can be running at the same time, each working on a different project, supervised by one of your team.*
+
 > **Rough notes in. Board-ready answers out.**
