@@ -1,37 +1,5 @@
 # 🧠 Data Intelligence Researcher
 
-## Work done
-
-Used Sonnet 4.6 not most advanced Opus 4.6
-
-No info card was supplied - just the CSV.
-
-I start with general ideas `01_kaggle_ideas.md` then use a command to create a detailed plan `02_kaggle_plan.md` and review that (I did not).
-
-I then use the spec command to create a detailed technical specification which can be reviewed - `03_kaggle_specs.md`.
-
-This spec is then executed and produces plots, charts, reports in the `output/PROJECT_01` folder.
-
-There is a `report.html`.
-
-I run a dashboard command to create a shiny dashboard.
-
-I then use /insights, a command that uses the best model to examin all the plots and charts to find deep insights of business and data analytics, creating both a `insights.md` file and `insights.html` web page.
-
-## Set up
-
-1. Using `pip`.
-
-2. Using `UV`.
-
-Install UV `https://docs.astral.sh/uv/getting-started/installation/`
-
-- `uv sync` loads in all the libraries.
-- ` .\.venv\Scripts\activate` to activate the virtual environment.
-- `uv run src/dashboard.py` to run the Shiny dashboard - may take a few moments to start up.
-
----
-
 > **AI-assisted data science — you bring the ideas, Claude does the heavy lifting.**
 
 ---
@@ -42,12 +10,13 @@ Install UV `https://docs.astral.sh/uv/getting-started/installation/`
 
 ```
 1.  Write your idea (rough notes are fine!)  →  _ideas/my-idea.md
-2.  /plan  _ideas/my-idea.md
-3.  /spec  _plans/my-idea.md
+2.  /plan     _ideas/my-idea.md
+3.  /spec     _plans/my-idea.md
 4.  /execute  _specs/my-idea.md
+5.  /insights output/PROJECT_XX/plots src   ← deep insight report
 ```
 
-That's it. Claude profiles your data, writes the code, runs it, and saves the results. No boilerplate. No setup. Just answers.
+That's it. Claude profiles your data, writes the code, runs it, saves the results, and synthesises deep insights. No boilerplate. No setup. Just answers.
 
 ---
 
@@ -86,6 +55,16 @@ That's it. Claude profiles your data, writes the code, runs it, and saves the re
 │   🚀 Claude writes every script, runs    output/PROJECT_XX/    │
 │      them in order, fixes errors, and                           │
 │      delivers plots, CSVs, and a report                         │
+│                                                                 │
+└──────────────────────────┬──────────────────────────────────────┘
+                           │
+                           ▼  /insights output/PROJECT_XX/plots src
+┌─────────────────────────────────────────────────────────────────┐
+│                                                                 │
+│   🧠 Claude reads every chart and       output/PROJECT_XX/     │
+│      script, synthesises deep insights,   insights/            │
+│      and writes insights.md + .html                            │
+│      with per-chart and merged reports                          │
 │                                                                 │
 └─────────────────────────────────────────────────────────────────┘
 ```
@@ -161,6 +140,25 @@ You'll get plots, CSVs, and a report — ready to review.
 
 ---
 
+## 🧠 Step 4 — `/insights` (Claude synthesises deep insights)
+
+```
+/insights output/PROJECT_XX/plots src
+```
+
+> **Requires Claude Opus 4.6.** Switch model with `/model claude-opus-4-6` before running.
+
+Claude will:
+- 📖 Read every Python script for analytical context
+- 🖼️ Examine each chart individually with extended thinking
+- 📝 Write a per-chart `insights_<name>.md` file (resume-safe — skips already-completed charts)
+- 🔗 Merge all chart insights into a final `insights.md` with executive summary, cross-cutting patterns, risks table, and prioritised next steps
+- 🌐 Produce a styled, self-contained `insights.html` report
+
+All output goes to `output/PROJECT_XX/insights/`.
+
+---
+
 ## 🛠️ All Skills Reference
 
 All slash commands available in this project:
@@ -177,6 +175,7 @@ All slash commands available in this project:
 
 | Skill | Usage | What it does |
 |-------|-------|--------------|
+| `/insights` | `/insights <image_folder> <python_folder>` | Reads every chart and Python script, synthesises deep per-chart insights, then merges into `insights.md` + `insights.html`. Requires Claude Opus 4.6. Outputs go to `output/PROJECT_XX/insights/`. |
 | `/dashboard` | `/dashboard output/PROJECT_XX` | Builds and launches an interactive Shiny Dash dashboard from a completed project output folder |
 | `/style` | `/style` | Select and apply an output style for the current conversation |
 
@@ -250,10 +249,15 @@ src/         ← Python scripts (written by /execute)
 data/        ← Your datasets (gitignored, never modified)
 output/      ← All results, organised by run
   PROJECT_01/
+    plots/        ← PNG visualisations
+    insights/     ← Per-chart + merged insight reports (output of /insights)
+      insights_<name>.md
+      insights.md
+      insights.html
   PROJECT_02/
   ...
 .claude/
-  commands/  ← Slash command definitions (/plan, /spec, /execute, ...)
+  commands/  ← Slash command definitions (/plan, /spec, /execute, /insights, ...)
   agents/    ← Specialist sub-agents (code-quality-reviewer, ...)
 ```
 
@@ -284,6 +288,7 @@ Every run produces at minimum:
 | `report.html` | Self-contained HTML report with embedded plots, key findings, and an interview Q&A appendix |
 | `model/` | *(when modelling phase is included)* classification reports, feature importance tables, ROC data |
 | `tables/` | *(when statistical phase is included)* pivot tables, test results, segment breakdowns |
+| `insights/` | *(output of `/insights`)* per-chart `.md` files, merged `insights.md`, and styled `insights.html` |
 
 ### Cleaning rules (always enforced)
 
@@ -310,4 +315,5 @@ Plots are zero-padded and numbered in phase order:
 - **Use screenshots.** Paste an image directly into Claude Code — it can read charts, error messages, and UI screenshots to diagnose issues.
 - **Just ask.** Unsure what to do? Describe the situation in plain language and Claude will advise.
 - **Launch a dashboard.** After `/execute` completes, run `/dashboard output/PROJECT_XX` to explore results interactively.
+- **Go deeper with insights.** Run `/insights output/PROJECT_XX/plots src` to get per-chart and synthesised analytical reports. Switch to Claude Opus 4.6 first (`/model claude-opus-4-6`) for best results.
 - **Commit cleanly.** Use `/commit-message` to get a well-structured commit message from the diff.
