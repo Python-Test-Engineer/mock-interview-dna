@@ -16,11 +16,17 @@ There is a `report.html`.
 
 I run a dashboard command to create a shiny dashboard.
 
-Install UV `https://docs.astral.sh/uv/getting-started/installation/`or use `requirements.txt` with pip
+## Set up
+
+1. Using `pip`.
+
+2. Using `UV`.
+
+Install UV `https://docs.astral.sh/uv/getting-started/installation/`
 
 - `uv sync` loads in all the libraries.
 - ` .\.venv\Scripts\activate` to activate the virtual environment.
-- `uv run src/dashboard.py` to run the Shiny dashboard.
+- `uv run src/dashboard.py` to run the Shiny dashboard - may take a few moments to start up.
 
 ---
 
