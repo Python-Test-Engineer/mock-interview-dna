@@ -265,10 +265,17 @@ output/      ← All results, organised by run
 
 ## 🛠️ Setup
 
-**Prerequisites:** [Claude Code](https://claude.ai/code) + [uv](https://docs.astral.sh/uv/)
+**Prerequisites:** [Claude Code](https://claude.ai/code) + [uv](https://docs.astral.sh/uv/) or standard PIP installation:
 
 ```bash
+# set up project with UV
 uv sync
+
+# activate the virutal environment
+Windows (PowerShell): .\.venv\Scripts\Activate.ps1
+Windows (CMD): .\.venv\Scripts\activate.bat
+Mac/Linux: source .venv/bin/activate
+
 ```
 
 Done. Claude installs any extra packages it needs automatically as it works.
